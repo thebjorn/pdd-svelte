@@ -1,110 +1,22 @@
-<script>
-    // "/src/main.ts"
-    import DragHandle from "$lib/DragHandle.svelte"
-    import ToDo from "$lib/ToDo.svelte"
-    import Done from "$lib/Done.svelte";
-    import InProgress from "$lib/InProgress.svelte";
-    import {dnd} from "$lib/pdd";
+<script lang="ts">
+    import TaskList from "$lib/TaskList.svelte";
+    import type {TTask} from "$lib/taskutils.svelte.ts";
+
+    let tasks: TTask[] = $state([
+        { id: 'task-0', content: 'Organize a team-building event', status: 'todo' },
+        { id: 'task-1', content: 'Create and maintain office inventory', status: 'in-progress' },
+        { id: 'task-2', content: 'Update company website content', status: 'done' },
+        { id: 'task-3', content: 'Plan and execute marketing campaigns', status: 'todo' },
+        { id: 'task-4', content: 'Coordinate employee training sessions', status: 'done' },
+        { id: 'task-5', content: 'Manage facility maintenance', status: 'done' },
+        { id: 'task-6', content: 'Organize customer feedback surveys', status: 'todo' },
+        { id: 'task-7', content: 'Coordinate travel arrangements', status: 'in-progress' },
+    ])
 </script>
 
 <div class="mx-auto my-0 pt-6 w-[420px]">
     <div class="flex flex-col gap-2 p-2 border border-solid rounded">
-        
-        <div class="relative">
-            <div data-task-id="task-0" use:dnd
-                class="flex flex-row items-center bg-white hover:bg-slate-100 p-2 pl-0 border border-solid rounded text-sm hover:cursor-grab"
-                draggable="true" data-drop-target-for-element="true">
-                <DragHandle />
-                <span class="flex-grow flex-shrink truncate" data-task-content>
-                    Organize a team-building event
-                </span>
-                <ToDo />
-            </div>
-        </div>
-        
-        <div class="relative">
-            <div data-task-id="task-1" use:dnd
-                class="flex flex-row items-center bg-white hover:bg-slate-100 p-2 pl-0 border border-solid rounded text-sm hover:cursor-grab"
-                draggable="true" data-drop-target-for-element="true">
-                <DragHandle />
-                <span class="flex-grow flex-shrink truncate" data-task-content>
-                    Create and maintain office inventory
-                </span>
-                <InProgress />
-            </div>
-        </div>
-        
-        <div class="relative">
-            <div data-task-id="task-2" use:dnd
-                class="flex flex-row items-center bg-white hover:bg-slate-100 p-2 pl-0 border border-solid rounded text-sm hover:cursor-grab"
-                draggable="true" data-drop-target-for-element="true">
-                <DragHandle />
-                <span class="flex-grow flex-shrink truncate" data-task-content>
-                    Update company website content
-                </span>
-                <Done />
-            </div>
-        </div>
-        
-        <div class="relative">
-            <div data-task-id="task-3" use:dnd
-                class="flex flex-row items-center bg-white hover:bg-slate-100 p-2 pl-0 border border-solid rounded text-sm hover:cursor-grab"
-                draggable="true" data-drop-target-for-element="true">
-                <DragHandle />
-                <span class="flex-grow flex-shrink truncate" data-task-content>
-                    Plan and execute marketing campaigns
-                </span>
-                <ToDo />
-            </div>
-        </div>
-        
-        <div class="relative">
-            <div data-task-id="task-4" use:dnd
-                class="flex flex-row items-center bg-white hover:bg-slate-100 p-2 pl-0 border border-solid rounded text-sm hover:cursor-grab"
-                draggable="true" data-drop-target-for-element="true">
-                <DragHandle />
-                <span class="flex-grow flex-shrink truncate" data-task-content>
-                    Coordinate employee training sessions
-                </span>
-                <Done />
-            </div>
-        </div>
-        
-        <div class="relative">
-            <div data-task-id="task-5" use:dnd
-                class="flex flex-row items-center bg-white hover:bg-slate-100 p-2 pl-0 border border-solid rounded text-sm hover:cursor-grab"
-                draggable="true" data-drop-target-for-element="true">
-                <DragHandle />
-                <span class="flex-grow flex-shrink truncate" data-task-content>
-                    Manage facility maintenance
-                </span>
-                <Done />
-            </div>
-        </div>
-        
-        <div class="relative">
-            <div data-task-id="task-6" use:dnd
-                class="flex flex-row items-center bg-white hover:bg-slate-100 p-2 pl-0 border border-solid rounded text-sm hover:cursor-grab"
-                draggable="true" data-drop-target-for-element="true">
-                <DragHandle />
-                <span class="flex-grow flex-shrink truncate" data-task-content>
-                    Organize customer feedback surveys
-                </span>
-                <ToDo />
-            </div>
-        </div>
-        
-        <div class="relative">
-            <div data-task-id="task-7" use:dnd
-                class="flex flex-row items-center bg-white hover:bg-slate-100 p-2 pl-0 border border-solid rounded text-sm hover:cursor-grab"
-                draggable="true" data-drop-target-for-element="true">
-                <DragHandle />
-                <span class="flex-grow flex-shrink truncate" data-task-content>
-                    Coordinate travel arrangements
-                </span>
-                <InProgress />
-            </div>
-        </div>
+        <TaskList bind:tasks={tasks} />
     </div>
 </div>
 
