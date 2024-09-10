@@ -12,7 +12,7 @@ This project is powered by [Vite](https://vitejs.dev/)
 
 ## Run remotely
 
-→ [Run on StackBlitz](https://stackblitz.com/github/dotnize/pdnd-solid-tailwind?startScript=dev)
+→ [Run on StackBlitz](https://stackblitz.com/github/thebjorn/pdd-svelte?startScript=dev)
 
 ## Run locally
 
